@@ -1,0 +1,17 @@
+app = "kali-fly"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  DEBIAN_FRONTEND = "noninteractive"
+
+[[services]]
+  internal_port = 22
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = 22
