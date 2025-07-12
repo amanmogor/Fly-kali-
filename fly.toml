@@ -10,8 +10,23 @@ processes = []
   DEBIAN_FRONTEND = "noninteractive"
 
 [[services]]
-  internal_port = 22
+  internal_port = 80
   protocol = "tcp"
 
   [[services.ports]]
-    port = 22
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+# Optional if you need custom SSH or TCP access on another port:
+# [[services]]
+#   internal_port = 2222
+#   protocol = "tcp"
+#   [[services.ports]]
+#     port = 2222
+
+[vm]
+  size = "shared-cpu-1x"
